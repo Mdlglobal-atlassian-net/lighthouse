@@ -2,9 +2,9 @@
 
 The goal of this document is to explain how scoring works in Lighthouse and what to do to improve your Lighthouse scores.
 
-If you want a more comprehensive spreadsheet of this document to understand weighting and scoring, check out the [scoring spreadsheet](https://docs.google.com/spreadsheets/d/1up5rxd4EMCoMaxH8cppcK1x76n6HLx0e7jxb0e0FXvc):
+If you want a more comprehensive version of this document to understand weighting and scoring, check out the [scoring calculator](https://paulirish.github.io/lh-scorecalc/):
 
-<a href="https://docs.google.com/spreadsheets/d/1up5rxd4EMCoMaxH8cppcK1x76n6HLx0e7jxb0e0FXvc" target="_blank"><img alt="Click image to open scoring spreadsheet in new browser tab." src="https://user-images.githubusercontent.com/39191/32397461-2d20c87a-c0a7-11e7-99d8-61576113a710.png"></a>
+<a href="https://paulirish.github.io/lh-scorecalc/" target="_blank"><img alt="Click image to open scoring calculator in new browser tab." src="https://user-images.githubusercontent.com/316891/81233455-b3230480-8fc4-11ea-97e0-7b6c57eef079.png"></a>
 
 Note: receiving a **score of ?** in any Lighthouse category indicates an error occurred. Please file an [issue](https://github.com/GoogleChrome/lighthouse/issues) with proper [bug labels](./bug-labels.md) so our team can look into it.
 
@@ -27,7 +27,7 @@ Lighthouse measures the following performance metrics:
 
 ### How are the scores weighted?
 
-Lighthouse returns a performance score from 0-100 (technically stored as a decimal, but formatted in reports for readability). A score of 0 usually indicates an error with performance measurement, and 100 is the best possible score (very difficult to achieve). Usually, any score above a 90 gets you in the top ~5% of performant websites.
+Lighthouse returns a performance score from 0-100 (technically stored as a decimal, but formatted in reports for readability). A score of 0 usually indicates serious performance issues, and 100 is the best possible score (very difficult to achieve). Usually, any score above a 90 puts you in the top ~5% of performant websites.
 
 The performance score is determined from the **performance metrics only**. The Opportunities / Diagnostics sections do not directly contribute to the performance score.
 
@@ -44,7 +44,7 @@ These weights are heuristics, and the Lighthouse team is working on formalizing 
 
 ### How do performance metrics get scored?
 
-Once Lighthouse is done gathering the raw performance metrics for your website (metrics reported in milliseconds), it converts them into a score by mapping the raw performance number to a number between 0-100 by looking where your raw performance metric falls on the Lighthouse scoring distribution. The Lighthouse scoring distribution is a log normal distribution that is derived from the performance metrics of real website performance data ([example sample distribution](https://www.desmos.com/calculator/zrjq6v1ihi)).
+Once Lighthouse is done gathering the raw performance metrics for your website (metrics reported in milliseconds), it converts them into a score by mapping the raw performance number to a number between 0-100 by looking where your raw performance metric falls on the Lighthouse scoring distribution. The Lighthouse scoring distribution is a log-normal distribution that is derived from the performance metrics of a large number of real website performance data ([example sample distribution](https://www.desmos.com/calculator/5zmpii7jiw)).
 
 Once it finishes computing the percentile equivalent of your raw performance score, it takes the weighted average of all the performance metrics (per the weighting above). Finally, it applies a coloring to the score (green, orange, and red) depending on what "bucket" your score falls in. This maps to:
 - Red (poor score): 0-49
