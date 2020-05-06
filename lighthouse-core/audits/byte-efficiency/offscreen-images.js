@@ -28,6 +28,7 @@ const UIStrings = {
 
 const str_ = i18n.createMessageInstanceIdFn(__filename, UIStrings);
 
+// See https://github.com/GoogleChrome/lighthouse/issues/10471 for discussion about the thresholds here.
 const ALLOWABLE_OFFSCREEN_IN_PX = 100;
 const ALLOWABLE_OFFSCREEN_BOTTOM_IN_VIEWPORTS = 3;
 
